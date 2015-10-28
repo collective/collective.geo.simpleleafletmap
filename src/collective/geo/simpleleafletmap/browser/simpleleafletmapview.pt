@@ -16,15 +16,16 @@
        
 
 
- <metal:block fill-slot="main">
+ <metal:block fill-slot="content-core">
   
-    <div id="not_out" style="min-height: 400px"></div>
+    <div id="simpleleafletmap" style="min-height: 400px"></div>
+    <div tal:content="structure context/getText"></div>
     
     <script type="text/javascript">
     var mapoptions = {attributionControl: true,  zoomControl: true,center: {lon: -77, lat: 18.15}};
     
     
-    var no_map = L.map('not_out').setView([0, 0], 3);;
+    var no_map = L.map('simpleleafletmap').setView([0, 0], 3);;
     var lyr = L.tileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png");
     no_map.addLayer(lyr);
     var p = JSON.parse(contextvariables.polygon);

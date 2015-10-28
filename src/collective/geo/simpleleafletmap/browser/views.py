@@ -6,7 +6,7 @@ class SimpleLeafletMapView(BrowserView):
     def __init__(self,context,request):
         self.context = context
         self.request = request
-        request.set('disable_border', True)
+        # request.set('disable_border', True)
         
     @property    
     def coordinates(self):
