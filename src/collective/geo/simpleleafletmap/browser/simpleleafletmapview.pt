@@ -1,0 +1,50 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:metal="http://xml.zope.org/namespaces/metal"
+     xmlns:tal="http://xml.zope.org/namespaces/tal"
+     xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+     metal:use-macro="context/main_template/macros/master">
+
+
+   <metal:block fill-slot="javascript_head_slot">
+       <script src="++resource++collective.geo.simpleleafletmap/leaflet.js"></script>
+       <metal:contextvariables tal:replace="structure view/js_contextvariables" />
+   </metal:block>
+   
+     <metal:block fill-slot="style_slot">
+           <link rel="stylesheet" href="++resource++collective.geo.simpleleafletmap/leaflet.css" />
+   </metal:block>
+       
+
+
+ <metal:block fill-slot="main">
+  
+    <div id="not_out" style="min-height: 400px"></div>
+    
+    <script type="text/javascript">
+    var mapoptions = {attributionControl: true,  zoomControl: true,center: {lon: -77, lat: 18.15}};
+    
+    
+    var no_map = L.map('not_out').setView([0, 0], 3);;
+    var lyr = L.tileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png");
+    no_map.addLayer(lyr);
+    var p = JSON.parse(contextvariables.polygon);
+    var n = []
+    
+    for (i = 0; i < p.length; i++) { 
+        
+        n.push([p[i][1],p[i][0]]);
+    }
+    var poly = L.polygon(n,{
+        color: 'red',
+        fillColor: '#333333',
+        fillOpacity: 0.1
+    });
+    poly.addTo(no_map);
+    
+    //no_map.panInsideBounds(poly.getBounds().pad(.45),{maxZoom: 15});
+    no_map.fitBounds(poly.getBounds().pad(.45),{maxZoom: 15});
+    
+         
+    </script>
+</metal:block>
+</html>
