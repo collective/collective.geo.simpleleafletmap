@@ -23,31 +23,11 @@
     
     <script type="text/javascript">
     var mapoptions = {attributionControl: true,  zoomControl: true,center: {lon: -77, lat: 18.15}};
-    
-    
-    var no_map = L.map('simpleleafletmap').setView([0, 0], 3);;
+    var no_map = L.map('simpleleafletmap',mapoptions);
     var lyr = L.tileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png");
     no_map.addLayer(lyr);
-    // var p = JSON.parse(contextvariables.polygon);
-    // var n = []
-    
-    // for (i = 0; i < p.length; i++) { 
-        
-    //     n.push([p[i][1],p[i][0]]);
-    // }
-    // var poly = L.polygon(n,{
-    //     color: 'red',
-    //     fillColor: '#333333',
-    //     fillOpacity: 0.1
-    // });
-    
-    // poly.addTo(no_map);
-    // no_map.fitBounds(poly.getBounds().pad(.45),{maxZoom: 15});
-    
-    console.log(contextvariables);
-    //var gj = L.geoJson(contextvariables.mygeoJson);
     no_map.addLayer(contextvariables.leafletlayer);
-    no_map.fitBounds(contextvariables.leafletlayer.getBounds().pad(.45),{maxZoom: 15});
+    no_map.fitBounds(contextvariables.leafletlayer.getBounds().pad(.45),{maxZoom: 12});
     
     
          
