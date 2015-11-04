@@ -1,7 +1,5 @@
 from collective.geo.geographer.interfaces import IGeoreferenced
 from Products.Five.browser import BrowserView
-#from .geomet import wkt
-#from collective.geo.simpleleafletmap.browser.geomet import wkt
 
 class SimpleLeafletMapView(BrowserView):
     """ this will return a leaflet featureGroup, if the current object is 
@@ -9,27 +7,25 @@ class SimpleLeafletMapView(BrowserView):
     def __init__(self,context,request):
         self.context = context
         self.request = request
-        # request.set('disable_border', True)
-    
+
     def flip(self,data):
         return data[::-1]
-        #(data[1],data[0])
-    
+
     def collective_geo_to_leaflet(self, intype, intup):
         if intype == 'Point':
-            feat = 'L.marker([{}, {}])'.format(intup[1],intup[0])
+            feat = 'L.marker([{0}, {1}])'.format(intup[1],intup[0])
         
         if intype == 'LineString':
             flipped = [self.flip(coord_set) for coord_set in intup]
             feat = str(flipped).replace('(','[').replace(')',']')
-            feat = 'L.polyline({})'.format(feat)
+            feat = 'L.polyline({0})'.format(feat)
         
         if intype == 'Polygon':
             flipped = [self.flip(coord_set) for coord_set in intup[0][:-1]]
             feat = str(flipped).replace('(','[').replace(')',']')
-            feat = 'L.polygon({})'.format(feat)
+            feat = 'L.polygon({0})'.format(feat)
         
-        return 'L.featureGroup([{}])'.format(feat)
+        return 'L.featureGroup([{0}])'.format(feat)
   
   
 

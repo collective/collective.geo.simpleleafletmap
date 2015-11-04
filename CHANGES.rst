@@ -5,6 +5,8 @@ Changelog
 0.1 (unreleased)
 ----------------
 
+- Removed geomet library (we aren't using it)
+- Fixed uses of .format() that were incompatible with Python 2.6
 - Ensured that simpleleafletmapview works for points and linestrings, not just polygons
   [rhysallister]
 - Registered the simpleleafletmapview on Collections and Folders
