@@ -1,0 +1,10 @@
+[main]
+host = https://www.transifex.com
+
+[plone-collective.collective-geo-simpleleafletmap-pot]
+file_filter = src/collective/geo/simpleleafletmap/locales/<lang>/LC_MESSAGES/collective.geo.simpleleafletmap.po
+minimum_perc = 0
+source_file = src/collective/geo/simpleleafletmap/locales/collective.geo.simpleleafletmap.pot
+source_lang = en
+type = PO
+
