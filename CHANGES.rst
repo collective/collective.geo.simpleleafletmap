@@ -5,6 +5,8 @@ Changelog
 0.1 (unreleased)
 ----------------
 
+- Added Spanish translation
+  [macagua]
 - Updated i18n support
   [macagua]
 - Removed geomet library (we aren't using it)
